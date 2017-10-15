@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import tickColours from '../functions/tickColours'
 
 function Square ({colour}) {
   var style = {
@@ -16,6 +17,14 @@ export default class Board extends Component {
   }
   componentDidMount() {
     this.props.init()
+    this.startTicking()
+  }
+
+  startTicking() {
+    setInterval(() => {
+      let newBoard = tickColours(this.props.board, [])
+      this.props.tick(newBoard)
+    }, 1000)
   }
   render() {
     console.log(this.props)

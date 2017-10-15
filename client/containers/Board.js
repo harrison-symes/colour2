@@ -10,7 +10,8 @@ const mapStateToProps = ({board}) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    init: () => dispatch({type: 'INIT'})
+    init: () => dispatch({type: 'INIT'}),
+    tick: (board) => dispatch({type: 'TICK_BOARD', board})
   }
 }
 
