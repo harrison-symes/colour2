@@ -56,9 +56,9 @@ export default class Board extends Component {
         <div className="level">
           <SizeSlider />
           <IntervalSlider />
-          <button className="button is-warning is-large" onClick={this.reset.bind(this)}>RESET</button>
         </div>
         <div className="level">
+          <button className="button is-warning is-large" onClick={this.reset.bind(this)}>RESET</button>
           {interval
             ? <button className="button is-large is-danger" onClick={this.stopTicking.bind(this)}>STOP</button>
             : <button className="button is-large is-success" onClick={this.startTicking.bind(this)}>START</button>
