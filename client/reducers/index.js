@@ -1,7 +1,11 @@
 import {combineReducers} from 'redux'
 
-import board from './board' 
+import board from './board'
+import size from './size'
+import interval from './interval'
 
 export default combineReducers({
-  board
+  board,
+  size,
+  speed: interval
 })

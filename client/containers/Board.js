@@ -2,8 +2,10 @@ import {connect} from 'react-redux'
 
 import Board from '../components/Board'
 
-const mapStateToProps = ({board}) => {
+const mapStateToProps = ({speed, size, board}) => {
   return {
+    speed,
+    size,
     board
   }
 }
