@@ -2,9 +2,10 @@ import {connect} from 'react-redux'
 
 import Square from '../components/Square'
 
-const mapStateToProps = ({size}) => {
+const mapStateToProps = ({size, savedColours}) => {
   return {
-    size
+    size,
+    savedColours
   }
 }
 

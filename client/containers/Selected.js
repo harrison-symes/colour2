@@ -8,4 +8,10 @@ const mapStateToProps = ({savedColours}) => {
   }
 }
 
-export default connect(mapStateToProps)(Selected)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    unSelect: (colour) => dispatch({type: 'REMOVE_COLOUR', colour})
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Selected)

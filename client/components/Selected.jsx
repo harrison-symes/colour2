@@ -1,13 +1,12 @@
 import React from 'react'
 
-export default class Selected extends React.Component {
-  render() {
-    const {colours} = this.props
-    return <div className="columns is-multiline">
-      {colours.map(({colour}, i ) => <div key={i} className="column is-2" style={{backgroundColor: colour, height: '15vh'}}>
-          {colour}
-        </div>
-      )}
-    </div>
-  }
+export default function Selected (props) {
+  const {colours, unSelect} = props
+  return <div className="columns is-multiline">
+    {colours.map((c, i ) => <div  key={i} className="column is-2" style={{backgroundColor: c.colour, height: '15vh'}}>
+        <h1 className="subtitle is-6">{c.colour}</h1>
+        <button className="delete" onClick={() => unSelect(c)}/>
+      </div>
+    )}
+  </div>
 }
