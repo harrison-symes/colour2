@@ -23,7 +23,6 @@ function createColour() {
 }
 
 function generateArray(size) {
-  ({size})
   return Array(size).fill([]).map((idx) => {
     return Array(size).fill({})
   })

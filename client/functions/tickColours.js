@@ -9,38 +9,31 @@ import clone from 'clone'
 // }
 
 function tick(board, row, col, nextRow, nextCol, square) {
-  ("calling tick on ", {row, col});
   board[row][col] = board[nextRow][nextCol]
 }
 
 function tickLoop(board, center) {
-  ("tick");
   var row = center
   var col = center - 1
   let count = 0
   var square = center - 1
   let flag = true
   while (flag) {
-    ({square});
     if (row == 0 && col == 0) flag = false
     else if (row == square && col == square) {
-      ("new square");
       tick(board, row, col, row, col -1)
       col--
       square--
-      ("post square change", {square, row, col});
     } else {
       let tempRow = incrementRow(row, col, square, board.length)
       let tempCol = incrementCol(row, col, square, board.length)
       tick(board, row, col, tempRow, tempCol)
       col = tempCol
       row = tempRow
-      ("increment col/row");
     }
     count++
     // if (count > 15) break
   }
-  ("stopped");
 }
 
 function tickBoard(board, selected) {
@@ -56,23 +49,19 @@ function tickBoard(board, selected) {
 
 function fillZeroIndex(board, selected) {
   let answer = randomiser.createColour()
-  ({selected});
   if (selected.length > 0) {
     selected.forEach((select) => {
       let found = null
       board.forEach((array) => {
         array.forEach((el) => {
           if (el.colour == select.colour) {
-            ("found match", {el, select});
             found = el
           }
         })
       })
-      ({found});
       if (found == null) answer = select
     })
   }
-  ("randomising");
   return answer
 }
 

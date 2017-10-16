@@ -6,7 +6,6 @@ export default function savedColoursReducer (state = [], action) {
       const newState = [...state].filter(colour => colour != action.colour)
       return [...newState, action.colour]
     case 'REMOVE_COLOUR':
-      (action)
       return [...state].filter(colour => colour != action.colour)
     default:
       return state
