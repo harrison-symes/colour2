@@ -12,15 +12,32 @@ export default class Board extends Component {
     this.state = {
       interval: null
     }
+    this.handleKey = this.handleKey.bind(this)
   }
   componentDidMount() {
     this.props.init()
+    window.onkeyup = (e) => this.handleKey(e)
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.speed != this.props.speed && this.state.interval) {
       this.stopTicking()
       this.startTicking()
     }
+  }
+  handleKey(e) {
+    var key = e.keyCode ? e.keyCode : e.which;
+    console.log(key)
+    if (key === 84) this.tickOnce()
+    else if (key === 83) {
+      if (this.state.interval) this.stopTicking()
+      else this.startTicking()
+    }
+    else if (key === 38) this.props.alterSize(this.props.size + 2) //increase size
+    else if (key === 40) this.props.alterSize(this.props.size - 2) //decrease size
+    else if (key === 39) this.props.alterSpeed(1) //increase speed
+    else if (key === 37) this.props.alterSpeed(-1) //decrease speed
+    else if (key === 82) this.reset()
+    else if (key === 67) this.props.switchCircles()
   }
   tickOnce() {
     this.props.tick(tickColours(this.props.board, this.props.savedColours))

@@ -18,7 +18,9 @@ const mapDispatchToProps = (dispatch) => {
     tick: (board) => dispatch({type: 'TICK_BOARD', board}),
     saveColour: (colour) => dispatch({type: 'SAVE_COLOUR', colour}),
     reset: () => dispatch({type: 'INIT'}),
-    switchCircles: () => dispatch({type: 'SWITCH'})
+    switchCircles: () => dispatch({type: 'SWITCH'}),
+    alterSize: (size) => dispatch({type: 'ALTER_SIZE', size}),
+    alterSpeed: (increment) => dispatch({type: 'ALTER_SPEED', increment})
   }
 }
 

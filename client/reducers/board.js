@@ -6,6 +6,9 @@ export default function boardReducer (state = [], action) {
       return randomiser.populateArray(randomiser.generateArray(3))
     case 'GROW_BOARD':
       return randomiser.populateArray(randomiser.generateArray(action.size))
+    case 'ALTER_SIZE':
+      if (action.size < 1 || action.size > 49) return state
+      return randomiser.populateArray(randomiser.generateArray(action.size))
     case 'TICK_BOARD':
       return [...action.board]
     default:
