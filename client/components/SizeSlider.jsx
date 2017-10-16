@@ -10,9 +10,12 @@ export default class SizeSlider extends Component {
   }
   render() {
     console.log(this.props)
-    return  <div>
-      <h1>Size: {this.props.size}</h1>
-      <input onChange={this.slide.bind(this)} type="range" value={this.props.size} min="3" max="50" />
+    const {size} = this.props
+    const max = 49
+    const bColour = size != max ? (size < max / 3 * 2 ? (size < max / 3 ? 'green': 'yellow') : 'orange') : 'red'
+    return  <div className="section">
+      <h1 className="subtitle is-1">Size: {size}</h1>
+      <input className="progress" style={{backgroundColor: bColour}} onChange={this.slide.bind(this)} type="range" value={size} min="3" max={max} />
     </div>
   }
 }

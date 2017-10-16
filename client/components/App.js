@@ -1,15 +1,13 @@
 import React from 'react'
 import Board from '../containers/Board'
-import SizeSlider from '../containers/SizeSlider'
-import IntervalSlider from '../containers/IntervalSlider'
 
 module.exports = ({state, dispatch}) => {
 
   // console.log(renderSquares(state.colourArray))
   // console.log(state.colourArray);
-  return <div>
+  return <div className="container">
+    <h1 className="title is-1 has-text-centered">Colour (2)</h1>
+    <hr />
     <Board />
-    <SizeSlider />
-    <IntervalSlider />
   </div>
 }

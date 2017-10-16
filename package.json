@@ -34,6 +34,7 @@
     "clone": "^2.1.1",
     "enzyme": "^2.8.2",
     "nodemon": "^1.11.0",
+    "rangeslider.js": "^2.3.1",
     "sqlite3": "^3.1.8",
     "supertest": "^3.0.0"
   },
