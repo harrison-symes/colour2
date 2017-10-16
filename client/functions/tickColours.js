@@ -9,38 +9,38 @@ import clone from 'clone'
 // }
 
 function tick(board, row, col, nextRow, nextCol, square) {
-  console.log("calling tick on ", {row, col});
+  ("calling tick on ", {row, col});
   board[row][col] = board[nextRow][nextCol]
 }
 
 function tickLoop(board, center) {
-  console.log("tick");
+  ("tick");
   var row = center
   var col = center - 1
   let count = 0
   var square = center - 1
   let flag = true
   while (flag) {
-    console.log({square});
+    ({square});
     if (row == 0 && col == 0) flag = false
     else if (row == square && col == square) {
-      console.log("new square");
+      ("new square");
       tick(board, row, col, row, col -1)
       col--
       square--
-      console.log("post square change", {square, row, col});
+      ("post square change", {square, row, col});
     } else {
       let tempRow = incrementRow(row, col, square, board.length)
       let tempCol = incrementCol(row, col, square, board.length)
       tick(board, row, col, tempRow, tempCol)
       col = tempCol
       row = tempRow
-      console.log("increment col/row");
+      ("increment col/row");
     }
     count++
     // if (count > 15) break
   }
-  console.log("stopped");
+  ("stopped");
 }
 
 function tickBoard(board, selected) {
@@ -56,23 +56,23 @@ function tickBoard(board, selected) {
 
 function fillZeroIndex(board, selected) {
   let answer = randomiser.createColour()
-  console.log({selected});
+  ({selected});
   if (selected.length > 0) {
     selected.forEach((select) => {
       let found = null
       board.forEach((array) => {
         array.forEach((el) => {
           if (el.colour == select.colour) {
-            console.log("found match", {el, select});
+            ("found match", {el, select});
             found = el
           }
         })
       })
-      console.log({found});
+      ({found});
       if (found == null) answer = select
     })
   }
-  console.log("randomising");
+  ("randomising");
   return answer
 }
 

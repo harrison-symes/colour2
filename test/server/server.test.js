@@ -12,7 +12,7 @@ test.cb('GET /', t => {
     .get('/api/greetings')
     .expect(200)
     .end((err,res) => {
-      if (err) console.log(err);
+      if (err) (err);
       t.is(res.body.length, 3)
       t.end()
     })

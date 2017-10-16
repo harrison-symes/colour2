@@ -3,7 +3,7 @@ import tickColours from '../../functions/tickColours'
 
 module.exports = (state, dispatch) => {
   function startTicker(interval) {
-    console.log({interval});
+    ({interval});
     setInterval(() => {
       let newBoard = tickColours(state.colourArray, state.selectedColours)
       dispatch({type: 'TICK_BOARD', payload: newBoard})
