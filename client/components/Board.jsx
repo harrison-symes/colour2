@@ -21,10 +21,12 @@ export default class Board extends Component {
       this.startTicking()
     }
   }
+  tickOnce() {
+    this.props.tick(tickColours(this.props.board, this.props.savedColours))
+  }
   startTicking() {
     const interval = setInterval(() => {
-      let newBoard = tickColours(this.props.board, this.props.savedColours)
-      this.props.tick(newBoard)
+      this.tickOnce()
     }, 2000 / this.props.speed)
     this.setState({interval})
   }
@@ -35,16 +37,6 @@ export default class Board extends Component {
   render() {
     const {board, size, saveColour} = this.props
     const {interval} = this.state
-    // function Square ({colour, save}) {
-    //   const height = `${80 / size}vh`
-    //   var style = {
-    //     height,
-    //     width: height,
-    //     background: colour.colour
-    //   };
-    //   return <div className="square has-text-centered" style={style}>
-    //   </div>
-    // }
     function renderRow(row, key) {
       return <span key={key} className="row">
         {row.map((colour, i) => <Square colour={colour} key={i} />)}
@@ -61,6 +53,8 @@ export default class Board extends Component {
           ? <button className="button is-large is-danger" onClick={this.stopTicking.bind(this)}>Stop</button>
           : <button className="button is-large is-success" onClick={this.startTicking.bind(this)}>Start</button>
         }
+        <hr />
+        <button className="button is-info is-large" onClick={this.tickOnce.bind(this)}>TICK</button>
       </div>
     </div>
   }
