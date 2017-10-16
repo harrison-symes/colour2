@@ -14,7 +14,7 @@ export default class SizeSlider extends Component {
     const max = 49
     const bColour = size != max ? (size < max / 3 * 2 ? (size < max / 3 ? 'green': 'yellow') : 'orange') : 'red'
     return  <div className="section">
-      <h1 className="subtitle is-1">Size: {size}</h1>
+      <h1 className="subtitle is-1">Size: <strong style={{color: bColour}}>{size}</strong></h1>
       <input className="progress" style={{backgroundColor: bColour}} onChange={this.slide.bind(this)} type="range" value={size} min="3" max={max} />
     </div>
   }

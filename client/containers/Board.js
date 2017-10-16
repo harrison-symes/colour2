@@ -15,7 +15,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     init: () => dispatch({type: 'INIT'}),
     tick: (board) => dispatch({type: 'TICK_BOARD', board}),
-    saveColour: (colour) => dispatch({type: 'SAVE_COLOUR', colour})
+    saveColour: (colour) => dispatch({type: 'SAVE_COLOUR', colour}),
+    reset: () => dispatch({type: 'INIT'})
   }
 }
 

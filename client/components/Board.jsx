@@ -4,6 +4,7 @@ import tickColours from '../functions/tickColours'
 import SizeSlider from '../containers/SizeSlider'
 import IntervalSlider from '../containers/IntervalSlider'
 import Square from '../containers/Square'
+import Selected from '../containers/Selected'
 
 export default class Board extends Component {
   constructor(props) {
@@ -34,27 +35,35 @@ export default class Board extends Component {
     clearInterval(this.state.interval)
     this.setState({interval: null})
   }
+  reset() {
+    this.stopTicking()
+    clearInterval(this.state.interval)
+    this.props.reset()
+  }
   render() {
-    const {board, size, saveColour} = this.props
+    const {board, size, saveColour, reset} = this.props
     const {interval} = this.state
     function renderRow(row, key) {
       return <span key={key} className="row">
         {row.map((colour, i) => <Square colour={colour} key={i} />)}
       </span>
     }
-    return <div className="container has-text-centered columns">
-      <div className="column is-8">
+    return <div className="has-text-centered columns">
+      <div className="column">
         {board.map(renderRow)}
       </div>
-      <div className="column is-4">
-        <SizeSlider />
-        <IntervalSlider />
-        {interval
-          ? <button className="button is-large is-danger" onClick={this.stopTicking.bind(this)}>Stop</button>
-          : <button className="button is-large is-success" onClick={this.startTicking.bind(this)}>Start</button>
-        }
-        <hr />
-        <button className="button is-info is-large" onClick={this.tickOnce.bind(this)}>TICK</button>
+      <div className="column is-5">
+        <div className="level">
+          <SizeSlider />
+          <IntervalSlider />
+          {interval
+            ? <button className="button is-large is-danger" onClick={this.stopTicking.bind(this)}>STOP</button>
+            : <button className="button is-large is-success" onClick={this.startTicking.bind(this)}>START</button>
+          }
+          <button className="button is-info is-large" onClick={this.tickOnce.bind(this)}>TICK</button>
+          <button className="button is-warning is-large" onClick={this.reset.bind(this)}>RESET</button>
+        </div>
+        <Selected />
       </div>
     </div>
   }
