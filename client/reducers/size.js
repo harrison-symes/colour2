@@ -6,7 +6,7 @@ export default function sizeReducer (state = 3, action) {
       return action.size
     case 'ALTER_SIZE':
       const newSize = action.size
-      if (newSize < 1 || newSize > 49) return state
+      if (newSize < 3 || newSize > 49) return state
       else return newSize
     default:
       return state

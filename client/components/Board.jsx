@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import tickColours from '../functions/tickColours'
+import {shuffleBoard} from '../functions/randomiser'
 
 import SizeSlider from '../containers/SizeSlider'
 import IntervalSlider from '../containers/IntervalSlider'
@@ -38,6 +39,7 @@ export default class Board extends Component {
     else if (key === 37) this.props.alterSpeed(-1) //decrease speed
     else if (key === 82) this.reset()
     else if (key === 67) this.props.switchCircles()
+    else if (key === 70) this.props.shuffle()
   }
   tickOnce() {
     this.props.tick(tickColours(this.props.board, this.props.savedColours))
@@ -60,6 +62,7 @@ export default class Board extends Component {
   render() {
     const {board, size, saveColour, reset, isCircles, switchCircles} = this.props
     const {interval} = this.state
+    console.log(shuffleBoard(board))
     function renderRow(row, key) {
       return <span key={key} className="row">
         {row.map((colour, i) => <Square colour={colour} key={i} />)}

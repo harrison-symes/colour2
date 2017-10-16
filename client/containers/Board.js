@@ -20,7 +20,8 @@ const mapDispatchToProps = (dispatch) => {
     reset: () => dispatch({type: 'INIT'}),
     switchCircles: () => dispatch({type: 'SWITCH'}),
     alterSize: (size) => dispatch({type: 'ALTER_SIZE', size}),
-    alterSpeed: (increment) => dispatch({type: 'ALTER_SPEED', increment})
+    alterSpeed: (increment) => dispatch({type: 'ALTER_SPEED', increment}),
+    shuffle: () => dispatch({type: 'SHUFFLE'})
   }
 }
 

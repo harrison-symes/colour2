@@ -28,9 +28,35 @@ function generateArray(size) {
   })
 }
 
+function shuffleBoard(board) {
+  const size = board.length
+  let newBoard = shuffle(flatten(board))
+  const final = []
+  for (let i = 0; i < size; i++) {
+    final.push(newBoard.splice(0, size))
+  }
+  return final
+}
+
+function shuffle(a) {
+  a = [...a]
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+  return a
+}
+
+function flatten(arr) {
+  return arr.reduce(function (flat, toFlatten) {
+    return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
+  }, []);
+}
+
 module.exports = {
   getRandomColor,
   populateArray,
   generateArray,
-  createColour
+  createColour,
+  shuffleBoard
 }
